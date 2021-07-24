@@ -1,0 +1,29 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+class Result {
+public static String isBalanced(String s)
+{
+Stack<Character> st=new Stack<Character>();
+char[] c=s.toCharArray();
+char ch;
+for(char i:c)
+{
+    ch=st.empty()?'&':st.peek();
+    if(ch=='(' && i==')')
+    st.pop();
+    else if(ch=='{' && i=='}')
+    st.pop();
+    else if(ch=='[' && i==']')
+    st.pop();
+    else
+    st.push(i);
+}
+return(st.empty()?"YES":"NO");
+}
+}
